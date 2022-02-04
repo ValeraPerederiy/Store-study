@@ -1,0 +1,14 @@
+svg{
+    cursor: pointer;
+    &:hover{
+        opacity: .8;
+        
+    }
+}
+.svg-container{
+    box-sizing: border-box;
+}
+.staff{
+    margin-right: 20px;
+    font-size: 13px;
+}

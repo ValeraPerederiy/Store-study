@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+  <div class="row">
+   <app-header></app-header>
+  </div>
+<br>
+<br>
+<br>
+  <div class="row">
+
+    <div class="col-3 p-2">
+      <nav class="nav nav-pills flex-column flex-sm-col">
+        <a class="flex-sm-fill text-sm-center nav-link cursor" (click)="getAll()">All</a>
+        <a class="flex-sm-fill text-sm-center nav-link cursor" *ngFor="let cat of category" (click)="getCategory(cat)">{{cat}}</a>
+        <a class="flex-sm-fill text-sm-center nav-link cursor" [routerLink]="'/admin'">Admin</a>
+      </nav>
+    </div>
+
+    <div class="col-9 p-2">
+      <!-- product cart -->
+      <div *ngFor="let product of products.slice(0,slicer)" class="card m-1 p-1 bg-light">
+        <h4>
+          {{product.name}} <span class="badge rounded-pill bg-primary float-end"> ${{product.price}}.00 </span>
+        </h4>
+        <div class="card-text bg-white p-1"> {{product.description}} ({{product.category}})
+          <button class="btn btn-success btn-sm float-end" (click)="addToCart(product)">Add To Cart</button>
+        </div>
+      </div>
+      <!-- END product cart-->
+      <br>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Action
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" [ngClass]="{active: slicer===2}" (click)="slicer=2">2 products</a></li>
+          <li><a class="dropdown-item" [ngClass]="{active: slicer===4}" (click)="slicer=4">4 products</a></li>
+          <li><a class="dropdown-item" [ngClass]="{active: slicer===6}" (click)="slicer=6">6 products</a></li>
+        </ul>
+      </div>
+
+  </div>
+
+</div>

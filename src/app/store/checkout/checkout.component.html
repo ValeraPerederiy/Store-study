@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col p-2" [ngSwitch]="thnx">
+      <form [formGroup]="orderForm" novalidate class="m-2" (ngSubmit)="submit()" *ngSwitchCase="false">
+        <div class="form-group">
+          <label>Name</label>
+          <input formControlName="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input formControlName="phone" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input formControlName="address" class="form-control">
+        </div>
+        <div class="text-center">
+          <button type="button" [routerLink]="'/cart'" class="btn btn-secondary m-1">Back</button>
+          <button [disabled]="orderForm.invalid" type="submit" class="btn btn-primary m-1">Complete Order</button>
+        </div>
+      </form>
+
+      <div class="m-2 text-center" *ngSwitchCase="true">
+        <h2>Thanks!</h2>
+        <p>Thanks for placing your order</p>
+        <p>We'll ship your goods as soon as possible</p>
+        <button [routerLink]="'/store'" class="btn btn-primary">Return to Store</button>
+      </div>
+
+    </div>
+  </div>
+</div>
