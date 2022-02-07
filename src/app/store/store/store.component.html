@@ -18,7 +18,7 @@
 
     <div class="col-9 p-2">
       <!-- product cart -->
-      <div *ngFor="let product of products.slice(0,slicer)" class="card m-1 p-1 bg-light">
+      <div *ngFor="let product of products.slice(startIndex,slicer)" class="card m-1 p-1 bg-light">
         <h4>
           {{product.name}} <span class="badge rounded-pill bg-primary float-end"> ${{product.price}}.00 </span>
         </h4>
@@ -28,6 +28,7 @@
       </div>
       <!-- END product cart-->
       <br>
+      <div class="d-flex justify-content-between"></div>
       <div class="btn-group">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           Action
@@ -38,7 +39,24 @@
           <li><a class="dropdown-item" [ngClass]="{active: slicer===6}" (click)="slicer=6">6 products</a></li>
         </ul>
       </div>
-
+      <div class="pagination">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" (click)="startIndex=0">1</a></li>
+            <li class="page-item"><a class="page-link" (click)="startIndex=2">2</a></li>
+            <li class="page-item">
+              <a class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
   </div>
 
 </div>

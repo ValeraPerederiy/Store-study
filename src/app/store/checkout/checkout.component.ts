@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DataBaseService} from "../../share/data-base.service";
 import {CartService} from "../cart/cart.service";
 import {Order} from "../../share/models/order.model";
+import { phoneValidator } from './phone-validator';
 
 @Component({
   selector: 'app-checkout',
@@ -17,13 +18,23 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService
   ) {
     this.orderForm = new FormGroup({
-      'name': new FormControl('', Validators.required),
-      'phone': new FormControl('', Validators.required),
-      'address': new FormControl('', Validators.required),
+      'name': new FormControl('', 
+      [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(15)
+      ]),
+      'phone': new FormControl('', 
+      [
+        Validators.required,
+        phoneValidator
+      ]),
+      'address': new FormControl('', [Validators.required, Validators.minLength(10)]),
     });
   }
 
   ngOnInit(): void {
+    console.log(this.orderForm.controls['phone'].errors)
   }
 
   public submit(): void {

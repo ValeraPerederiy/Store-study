@@ -13,6 +13,8 @@ export class StoreComponent implements OnInit {
   public products: Product[] = [];
   public category:string[]=[];
   public slicer:number = 0;
+  public page:number = 0;
+  public startIndex:number=0;
   constructor(
     private dataBaseService: DataBaseService,
     private cartService: CartService,
@@ -53,6 +55,10 @@ export class StoreComponent implements OnInit {
       this.products = res.filter((data)=>data.category===category);
      
     });
+  }
+
+  public goToPage(page:number):void{
+    this.startIndex = this.slicer * (page - 1);
   }
 
   public addToCart(product: Product): void {
