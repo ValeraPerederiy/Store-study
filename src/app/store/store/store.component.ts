@@ -14,7 +14,7 @@ export class StoreComponent implements OnInit {
   public category:string[]=[];
   public slicer:number = 0;
   public page:number = 0;
-  public startIndex:number=0;
+  
   constructor(
     private dataBaseService: DataBaseService,
     private cartService: CartService,
@@ -40,6 +40,12 @@ export class StoreComponent implements OnInit {
       }); 
   }
 
+  public productsOnPage():Product[]{
+    const help = this.products;
+    const endIndex = this.slicer + this.getStartIndex();
+    return help.slice(this.getStartIndex(),endIndex)
+  }
+
   public getAll():void{
     this.dataBaseService
     .getProducts()
@@ -57,8 +63,8 @@ export class StoreComponent implements OnInit {
     });
   }
 
-  public goToPage(page:number):void{
-    this.startIndex = this.slicer * (page - 1);
+  public getStartIndex():number{
+    return this.slicer * (this.page - 1);
   }
 
   public addToCart(product: Product): void {
