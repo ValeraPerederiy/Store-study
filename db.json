@@ -45,29 +45,26 @@
   ],
   "orders": [
     {
-      "name": "af",
-      "phone": "fafaf",
-      "address": "wfawf",
+      "name": "Valera",
+      "phone": "+380444647720",
+      "address": "street Kirova house 2",
       "cartLines": [
         {
           "product": {
-            "id": 6,
-            "name": "product 6",
-            "description": "decription 6",
-            "price": 600,
-            "category": "category 2"
+            "id": 1,
+            "name": "product 1",
+            "description": "description 1",
+            "price": 100,
+            "category": "category 1"
           },
-          "_quantity": 4
+          "quantity": 2
         }
       ],
       "id": 1
-    },
-    {
-      "name": "Valera",
-      "phone": "+380999999999",
-      "address": "Улица Пушкина Дом Колотушкина Квартира 5",
-      "cartLines": [],
-      "id": 2
     }
+  ],
+  "categoryes": [
+    "category 1",
+    "category 2"
   ]
 }

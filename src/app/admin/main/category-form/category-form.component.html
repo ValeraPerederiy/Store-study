@@ -1,0 +1,14 @@
+
+<div mat-dialog-content>
+    <p *ngFor="let category of categoryes">{{category}}</p>
+</div>
+<div mat-dialog-actions>
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Clearable input</mat-label>
+        <input matInput type="text" [(ngModel)]="value">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    <button mat-button (click)="complete()">Ok</button>
+</div>

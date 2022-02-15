@@ -1,1 +1,18 @@
-<p>orders works!</p>
+<mat-card class="mb-1" *ngFor="let order of orders">
+  <mat-card-title>#{{order.id}} | {{order.name}}</mat-card-title>
+  <mat-card-subtitle><b>Address:</b> {{order.address}} | <b>Phone:</b> {{order.phone}}</mat-card-subtitle>
+  <mat-card-content>
+    <mat-list>
+      <ng-container *ngFor="let line of order.cartLines; let l = last">
+        <mat-list-item>
+            <span [matBadge]="line.quantity" matBadgeOverlap="false">{{line.product.name}}</span>
+        </mat-list-item>
+        <mat-divider *ngIf="!l"></mat-divider>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
