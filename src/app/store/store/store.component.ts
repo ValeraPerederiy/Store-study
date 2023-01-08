@@ -3,6 +3,9 @@ import {DataBaseService} from "../../share/data-base.service";
 import {Product} from "../../share/models/product.model";
 import {Router} from "@angular/router";
 import {CartService} from "../cart/cart.service";
+import { MatDialog } from '@angular/material/dialog';
+import { AuthComponent } from '../auth/auth.component';
+
 
 @Component({
   selector: 'app-store',
@@ -16,6 +19,7 @@ export class StoreComponent implements OnInit {
   public page:number = 0;
   
   constructor(
+    public dialog:MatDialog,
     private dataBaseService: DataBaseService,
     private cartService: CartService,
     private router: Router
@@ -40,11 +44,6 @@ export class StoreComponent implements OnInit {
       }); 
   }
 
-  public productsOnPage():Product[]{
-    const help = this.products;
-    const endIndex = this.slicer + this.getStartIndex();
-    return help.slice(this.getStartIndex(),endIndex)
-  }
 
   public getAll():void{
     this.dataBaseService
@@ -63,13 +62,15 @@ export class StoreComponent implements OnInit {
     });
   }
 
-  public getStartIndex():number{
-    return this.slicer * (this.page - 1);
-  }
 
   public addToCart(product: Product): void {
     this.router.navigate(['/cart']);
     this.cartService.addCartLine(product);
+  }
+
+  public adminLogin():void{
+    const dialogRef = this.dialog.open(AuthComponent, {width:'500px'});
+    
   }
 
 }

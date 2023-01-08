@@ -1,0 +1,41 @@
+<h1 mat-dialog-title align="center">Login</h1>
+<form [formGroup]="authForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Login</mat-label>
+      <input formControlName="login" matInput placeholder="Enter login">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Password</mat-label>
+      <input type="password" formControlName="password" matInput placeholder="Enter password">
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput placeholder="Enter description"></textarea>
+      <mat-error *ngIf="productForm.get('description')!.errors && productForm.get('description')!.dirty">
+        This is required field
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Price</mat-label>
+      <input class="right-align" type="number" formControlName="price" matInput placeholder="Enter price">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+      <mat-error *ngIf="productForm.get('price')!.errors && productForm.get('price')!.dirty">
+        This is required field
+      </mat-error>
+    </mat-form-field> -->
+  </div>
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-button (click)="cancel()">Cancel</button>
+    <button [disabled]="authForm.invalid" 
+    type="submit" 
+    mat-rised-button 
+    color="primary"
+    (click)="complete()">Ok</button>
+  </div>
+</form>
+

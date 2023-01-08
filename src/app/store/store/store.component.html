@@ -12,13 +12,13 @@
       <nav class="nav nav-pills flex-column flex-sm-col">
         <a class="flex-sm-fill text-sm-center nav-link cursor" (click)="getAll()">All</a>
         <a class="flex-sm-fill text-sm-center nav-link cursor" *ngFor="let cat of category" (click)="getCategory(cat)">{{cat}}</a>
-        <a class="flex-sm-fill text-sm-center nav-link cursor" [routerLink]="'/admin/main'">Admin</a>
+        <a class="flex-sm-fill text-sm-center nav-link cursor" (click)="adminLogin()" >Admin</a>
       </nav>
     </div>
 
     <div class="col-9 p-2">
       <!-- product cart -->
-      <div *ngFor="let product of productsOnPage()" class="card m-1 p-1 bg-light">
+      <div *ngFor="let product of products" class="card m-1 p-1 bg-light">
         <h4>
           {{product.name}} <span class="badge rounded-pill bg-primary float-end"> ${{product.price}}.00 </span>
         </h4>
@@ -34,9 +34,9 @@
           Action
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" [ngClass]="{active: slicer===2}" (click)="slicer=2">2 products</a></li>
-          <li><a class="dropdown-item" [ngClass]="{active: slicer===4}" (click)="slicer=4">4 products</a></li>
-          <li><a class="dropdown-item" [ngClass]="{active: slicer===6}" (click)="slicer=6">6 products</a></li>
+          <li><a class="dropdown-item" >2 products</a></li>
+          <li><a class="dropdown-item" >4 products</a></li>
+          <li><a class="dropdown-item" >6 products</a></li>
         </ul>
       </div>
       <div class="pagination">
@@ -47,8 +47,8 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li class="page-item"><a class="page-link" (click)="page=1">1</a></li>
-            <li class="page-item"><a class="page-link" (click)="page=2">2</a></li>
+            <li class="page-item"><a class="page-link" >1</a></li>
+            <li class="page-item"><a class="page-link" >2</a></li>
             <li class="page-item">
               <a class="page-link" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
