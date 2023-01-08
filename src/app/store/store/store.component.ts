@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {CartService} from "../cart/cart.service";
 import { MatDialog } from '@angular/material/dialog';
 import { AuthComponent } from '../auth/auth.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -13,6 +14,11 @@ import { AuthComponent } from '../auth/auth.component';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
+
+  public filterForm:FormGroup = new FormGroup({
+    'search': new FormControl(''),
+  })
+
   public products: Product[] = [];
   public category:string[]=[];
   public slicer:number = 0;
@@ -73,4 +79,14 @@ export class StoreComponent implements OnInit {
     
   }
 
+  public searching(){
+    if(this.filterForm.value.search === ''){
+      this.getAll();
+    }else{
+      
+      this.products = this.products.filter((product)=>product.name.search(this.filterForm.value.search) != -1)
+      
+    }
+   
+  }
 }

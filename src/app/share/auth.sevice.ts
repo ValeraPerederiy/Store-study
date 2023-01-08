@@ -6,7 +6,11 @@ export class AuthService {
 
     private isAuth = false;
 
-    checkAuth(login:string, password:string){
+    public logOut(){
+        this.isAuth = false;
+    }
+
+    public checkAuth(login:string, password:string){
         if(login === "Admin" && password === "1408"){
             this.isAuth = true;
         }else{
@@ -14,7 +18,7 @@ export class AuthService {
         }
     }
 
-    returnAuthStatus():Observable<boolean>{
+    public returnAuthStatus():Observable<boolean>{
         return of(this.isAuth)
     }
 }
